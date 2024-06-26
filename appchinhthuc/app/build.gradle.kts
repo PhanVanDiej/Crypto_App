@@ -1,3 +1,5 @@
+import android.databinding.tool.writer.ViewBinding
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -32,6 +34,10 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures{
+       viewBinding=true
+    }
+
 }
 
 dependencies {
