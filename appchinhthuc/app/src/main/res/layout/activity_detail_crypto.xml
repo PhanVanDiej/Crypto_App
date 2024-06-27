@@ -485,7 +485,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:id="@+id/imageView8"
+                            android:id="@+id/minusAmountBtn"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             app:srcCompat="@drawable/minus" />
@@ -505,7 +505,7 @@
                             android:hint="Amount"/>
 
                         <ImageView
-                            android:id="@+id/imageView9"
+                            android:id="@+id/plusAmountBtn"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
 
