@@ -72,9 +72,7 @@ data class CryptoModel(
         parcel.readDouble(),
         parcel.readDouble(),
         parcel.readString().toString()
-    ) {
-    }
-
+    )
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(Symbol)
         parcel.writeString(ShortSymbol)
