@@ -1,7 +1,9 @@
 package com.example.appchinhthuc.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -28,9 +30,16 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
         )
         initRecyclerviewCrypto()
+        UserBtnClick()
     }
     private fun initRecyclerviewCrypto(){
         binding.view.layoutManager=LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         binding.view.adapter=CryptoListAdapter(mainViewModel.loadData());
+    }
+    private fun UserBtnClick(){
+        findViewById<LinearLayout>(R.id.UserBtn).setOnClickListener{
+            val intent=Intent(this,UserProfile::class.java)
+            startActivity(intent)
+        }
     }
 }
