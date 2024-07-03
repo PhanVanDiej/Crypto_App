@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         )
         initRecyclerviewCrypto()
         UserBtnClick()
+        ChartBtnCLick()
     }
     private fun initRecyclerviewCrypto(){
         binding.view.layoutManager=LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
@@ -39,6 +40,12 @@ class MainActivity : AppCompatActivity() {
     private fun UserBtnClick(){
         findViewById<LinearLayout>(R.id.UserBtn).setOnClickListener{
             val intent=Intent(this,UserProfile::class.java)
+            startActivity(intent)
+        }
+    }
+    private fun ChartBtnCLick(){
+        findViewById<LinearLayout>(R.id.ChartBtn).setOnClickListener{
+            val intent=Intent(this,ChartCoin::class.java)
             startActivity(intent)
         }
     }
