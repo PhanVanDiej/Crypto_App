@@ -53,7 +53,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 
+    implementation("com.diogobernardino:williamchart:3.10.1")
 //ViewModel
     implementation("androidx.activity:activity-ktx:1.4.0")
     implementation("com.github.bumptech.glide:glide:4.12.0")
+
 }
