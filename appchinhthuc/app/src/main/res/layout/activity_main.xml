@@ -10,6 +10,7 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -50,7 +51,6 @@
                     android:textColor="#565d6c"
                     android:textColorHint="#565d6c"
                     android:textSize="16sp" />
-
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="wrap_content"

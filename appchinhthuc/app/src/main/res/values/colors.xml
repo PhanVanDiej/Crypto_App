@@ -12,6 +12,7 @@
     <color name="black3">#282f3c</color>"
     <color name="white_half">#10ffffff</color>
     <color name="light_grey">#565d6c</color>
+    <color name="yellow">#F7CD00</color>
     <!--switch color-->
     <color name="disable_forground_grey">#42221f1f</color>
     <color name="disable_thumb_grey">#ffffff</color>
