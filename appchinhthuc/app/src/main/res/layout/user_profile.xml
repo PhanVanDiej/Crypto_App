@@ -471,7 +471,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/wallet"
-                    app:tint="@color/white" />
+                    app:tint="@color/white"/>
 
                 <TextView
                     android:id="@+id/textView6"

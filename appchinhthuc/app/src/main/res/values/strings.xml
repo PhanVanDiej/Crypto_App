@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">appchinhthuc</string>
+    <string name="selected_item">Selected item:</string>
+    <string-array name="Currency" >
+        <item>USD - $</item>
+        <item>EURO - €</item>
+        <item>INR -  ₹</item>
+        <item>BRL - R$</item>
+        <item>PEN - S/.</item>
+        <item>CHF - CHF</item>
+        <item>KES - KSh</item>
+        <item>PHP - ₱</item>
+        <item>RUB - ₽</item>
+    </string-array>
 </resources>
