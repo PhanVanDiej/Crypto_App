@@ -1,5 +1,6 @@
 package com.example.appchinhthuc.Activity
 
+import android.content.Intent
 import android.icu.text.DecimalFormat
 import android.os.Bundle
 import android.view.WindowManager
@@ -30,6 +31,7 @@ class DetailCryptoActivity : AppCompatActivity() {
        getBundle()
         orderType()
         setVariable()
+        setDirectionBtn()
     }
 
     private fun setVariable() {
@@ -116,5 +118,27 @@ class DetailCryptoActivity : AppCompatActivity() {
         val adapter=ArrayAdapter(this,R.layout.spinner_item, listOf("Limit Order","Market Order","Stop Order"))
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.orderTypeSpin.adapter=adapter
+    }
+    private fun setDirectionBtn(){
+        binding.HomeBtn.setOnClickListener{
+            val intent= Intent(this@DetailCryptoActivity,MainActivity::class.java)
+            startActivity(intent)
+        }
+        binding.ExplorerBtn.setOnClickListener{
+            val intent=Intent(this@DetailCryptoActivity,MainActivity::class.java)
+            startActivity(intent)
+        }
+        binding.BookmarkBtn.setOnClickListener{
+            val intent=Intent(this@DetailCryptoActivity,MainActivity::class.java)
+            startActivity(intent)
+        }
+        binding.ChartBtn.setOnClickListener{
+            val intent=Intent(this@DetailCryptoActivity,ChartCoin::class.java)
+            startActivity(intent)
+        }
+        binding.ProfileBtn.setOnClickListener{
+            val intent=Intent(this@DetailCryptoActivity,UserProfile::class.java)
+            startActivity(intent)
+        }
     }
 }
