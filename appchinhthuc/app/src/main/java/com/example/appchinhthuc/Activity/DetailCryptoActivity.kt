@@ -83,7 +83,7 @@ class DetailCryptoActivity : AppCompatActivity() {
         binding.symbolNameTxt.text=item.ShortSymbol
         var exist: Boolean=false
         data?.forEach {
-            if(item.Symbol==it.name){
+            if(item.Symbol==it.name || item.Symbol.lowercase()==it.slug){
                 var price=it.quote.USD.price
                 price=BigDecimal(price).setScale(2, RoundingMode.HALF_EVEN).toDouble()
                 binding.priceTxt.setText("${price} $")

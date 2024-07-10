@@ -142,7 +142,11 @@ class ChartCoin :ComponentActivity() {
     private fun setValue(data :CryptoCurrency){
         var price=data.quote.USD.price
         price=BigDecimal(price).setScale(2,RoundingMode.HALF_EVEN).toDouble()
-        binding.lastPrice.setText("$ ${price}")
+        if (price<=0.01){
+            price=BigDecimal(price).setScale(7,RoundingMode.HALF_EVEN).toDouble()
+            binding.lastPrice.setText("$ ${price}")
+        }else
+            binding.lastPrice.setText("$ ${price}")
         var changed=data.quote.USD.percent_change_1h
         changed=BigDecimal(changed).setScale(2,RoundingMode.HALF_EVEN).toDouble()
         binding.lastDifference.setText("${changed}")
@@ -210,6 +214,27 @@ class ChartCoin :ComponentActivity() {
             binding.LogoCoin.setImageResource(R.drawable.trox)
             binding.QFirst.setTextColor(getColor(R.color.red))
             binding.QBack.setTextColor(getColor(R.color.red))
+        }
+        else if(data.name=="Bitcoin"){
+            binding.nameCoin.setTextColor(getColor(R.color.yellow))
+            binding.lastPrice.setTextColor(getColor(R.color.yellow))
+            binding.LogoCoin.setImageResource(R.drawable.bitcoin)
+            binding.QFirst.setTextColor(getColor(R.color.yellow))
+            binding.QBack.setTextColor(getColor(R.color.yellow))
+        }
+        else if(data.name=="BNB"){
+            binding.nameCoin.setTextColor(getColor(R.color.orange))
+            binding.lastPrice.setTextColor(getColor(R.color.orange))
+            binding.LogoCoin.setImageResource(R.drawable.bnb)
+            binding.QFirst.setTextColor(getColor(R.color.orange))
+            binding.QBack.setTextColor(getColor(R.color.orange))
+        }
+        else if(data.name.lowercase()=="shiba inu"){
+            binding.nameCoin.setTextColor(getColor(R.color.orange))
+            binding.lastPrice.setTextColor(getColor(R.color.orange))
+            binding.LogoCoin.setImageResource(R.drawable.shiba)
+            binding.QFirst.setTextColor(getColor(R.color.orange))
+            binding.QBack.setTextColor(getColor(R.color.orange))
         }
     }
     private fun setSpinner(){
@@ -340,7 +365,7 @@ class ChartCoin :ComponentActivity() {
     private fun direcSetValue(dataCurrencyInfo: List<CryptoCurrency>){
         var data=""
         dataCurrencyInfo.forEach {
-            data+=" " + it.name
+            data+=" " + it.name + " -"
         }
         binding.testdata.setText(data)
         val search=binding.searchField
@@ -352,7 +377,7 @@ class ChartCoin :ComponentActivity() {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val inputText = search.text.toString().toLowerCase()
                 dataCurrencyInfo?.forEach {
-                    if (it.slug == inputText)
+                    if (it.slug == inputText || it.name.toLowerCase()==inputText)
                         setValue(it)
                 }
                 true // Return true to indicate that you have handled the event
