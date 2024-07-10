@@ -332,6 +332,7 @@
                             android:layout_marginLeft="150dp"/>
                     </LinearLayout>
                     <LinearLayout
+
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="20dp"
@@ -459,7 +460,7 @@
             android:layout_gravity="center">
 
             <LinearLayout
-                android:id="@+id/bottomBtn1"
+                android:id="@+id/HomeBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -467,10 +468,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/wallet"
+                    android:src="@drawable/wallet"
                     app:tint="@color/white"/>
 
                 <TextView
@@ -484,7 +484,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/bottomBtn2"
+                android:id="@+id/ExplorerBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -492,10 +492,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/market"
+                    android:src="@drawable/market"
                     app:tint="@color/white" />
 
                 <TextView
@@ -509,7 +508,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/bottomBtn"
+                android:id="@+id/BookmarkBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -520,7 +519,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/trade"
+                    android:src="@drawable/trade"
                     app:tint="@color/white" />
 
                 <TextView
@@ -534,7 +533,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/bottomBtn4"
+                android:id="@+id/ChartBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -545,7 +544,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/futures"
+                    android:src="@drawable/futures"
                     app:tint="@color/white" />
 
                 <TextView
@@ -559,7 +558,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/bottomBtn5"
+                android:id="@+id/ProfileBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -570,7 +569,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/profile"
+                    android:src="@drawable/profile"
                     app:tint="@color/white" />
 
                 <TextView

@@ -32,10 +32,8 @@
                     android:id="@+id/backBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-
                     android:padding="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/back" />
@@ -723,7 +721,7 @@
                 android:layout_gravity="center">
 
                 <LinearLayout
-                    android:id="@+id/bottomBtn1"
+                    android:id="@+id/HomeBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
@@ -731,7 +729,6 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/wallet"
@@ -748,7 +745,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/bottomBtn2"
+                    android:id="@+id/ExplorerBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
@@ -756,7 +753,6 @@
                     android:orientation="vertical">
 
                     <ImageView
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/market"
@@ -773,7 +769,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/bottomBtn"
+                    android:id="@+id/BookmarkBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
@@ -781,7 +777,6 @@
                     android:orientation="vertical">
 
                     <ImageView
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/trade"
@@ -798,7 +793,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/bottomBtn4"
+                    android:id="@+id/ChartBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
@@ -806,7 +801,6 @@
                     android:orientation="vertical">
 
                     <ImageView
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/futures"
@@ -823,7 +817,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/bottomBtn5"
+                    android:id="@+id/ProfileBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"

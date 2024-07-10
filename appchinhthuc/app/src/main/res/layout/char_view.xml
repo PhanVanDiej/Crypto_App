@@ -41,7 +41,7 @@
                     android:src="@drawable/forward" />
             </LinearLayout>
                 <EditText
-                    android:id="@+id/editTextText"
+                    android:id="@+id/searchField"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="18dp"
@@ -51,6 +51,7 @@
                     android:background="@drawable/semi_white_bg"
                     android:drawableStart="@drawable/search_icon"
                     android:drawablePadding="8dp"
+                    android:imeOptions="actionDone"
                     android:ems="10"
                     android:hint="search anything..."
                     android:inputType="text"
@@ -65,15 +66,17 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp">
                 <ImageView
+                    android:id="@+id/LogoCoin"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/bitcoin_icon"/>
                 <TextView
+                    android:id="@+id/nameCoin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bitcoin Price"
                     android:textStyle="bold"
                     android:textSize="18dp"
+                    android:textColor="@color/yellow"
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center"/>
                 <Spinner
@@ -91,20 +94,29 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Price :"
-                    android:textColor="@color/white"
-                    android:textSize="14dp"/>
-                <TextView
                     android:id="@+id/lastPrice"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:layout_gravity="center"
-                    android:textColor="@color/green"
-                    android:textSize="18dp"/>
+                    android:textColor="@color/yellow"
+                    android:textSize="22dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Changed"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15dp"/>
+                <Spinner
+                    android:background="@drawable/background_spiner_currency"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ChangedDuration"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -131,16 +143,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Last Trade :"
-                    android:textSize="14dp"
-                    android:textColor="@color/white"/>
+                    android:layout_gravity="center"
+                    android:text="Last Update :"
+                    android:textSize="14dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/dateLastTrade"
+                    android:id="@+id/dateLastUpdate"
                     android:layout_gravity="center"
                     android:textSize="16dp"
                     android:textStyle="bold"
+                    android:textColor="@color/white"
                     android:layout_marginLeft="10dp"/>
             </LinearLayout>
             <com.github.mikephil.charting.charts.LineChart
@@ -149,11 +162,12 @@
                 android:layout_height="400dp"
                 android:id="@+id/CoinLineChart"/>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/QFirst"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -169,6 +183,7 @@
                     android:textStyle="bold"
                     android:textSize="20dp"/>
                 <TextView
+                    android:id="@+id/QBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/yellow"
@@ -226,7 +241,12 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="400dp"/>
+                android:layout_height="400dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/testdata"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
@@ -247,7 +267,7 @@
             android:layout_gravity="center">
 
             <LinearLayout
-                android:id="@+id/bottomBtn1"
+                android:id="@+id/HomeBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -258,9 +278,8 @@
                     android:id="@+id/imageView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="TODO"
-                    app:srcCompat="@drawable/wallet"
-                    app:tint="@color/white" />
+                    android:src="@drawable/wallet"
+                    android:tint="@color/white" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -273,7 +292,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/bottomBtn2"
+                android:id="@+id/ExplorerBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -281,11 +300,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="TODO"
-                    app:srcCompat="@drawable/market"
+                    android:src="@drawable/market"
                     app:tint="@color/white" />
 
                 <TextView
@@ -299,7 +316,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/bottomBtn"
+                android:id="@+id/BookmarkBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -310,8 +327,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="TODO"
-                    app:srcCompat="@drawable/trade"
+                    android:src="@drawable/trade"
                     app:tint="@color/white" />
 
                 <TextView
@@ -335,8 +351,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="TODO"
-                    app:srcCompat="@drawable/futures"
+                    android:src="@drawable/futures"
                     app:tint="@color/white" />
 
                 <TextView
@@ -350,7 +365,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/bottomBtn5"
+                android:id="@+id/ProfileBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
@@ -361,7 +376,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/profile"
+                    android:src="@drawable/profile"
                     app:tint="@color/white" />
 
                 <TextView

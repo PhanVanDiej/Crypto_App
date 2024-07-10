@@ -1,6 +1,7 @@
 package com.example.appchinhthuc.Activity
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.ImageView
@@ -12,11 +13,14 @@ import com.example.appchinhthuc.databinding.ActivityDetailCryptoBinding
 import com.example.appchinhthuc.databinding.UserProfileBinding
 
 class UserProfile :ComponentActivity() {
-
+    private var _binding:UserProfileBinding?=null
+    val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.user_profile)
+        _binding=UserProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        setDirectionBtn()
         eyeClick()
     }
     private fun eyeClick(){
@@ -33,6 +37,28 @@ class UserProfile :ComponentActivity() {
                 phoneNum.setText("*******262")
                 setEye.setImageResource(R.drawable.hide_infor_icon)
             }
+        }
+    }
+    private fun setDirectionBtn(){
+        binding.HomeBtn.setOnClickListener{
+            val intent= Intent(this@UserProfile,MainActivity::class.java)
+            startActivity(intent)
+        }
+        binding.ExplorerBtn.setOnClickListener{
+            val intent= Intent(this@UserProfile,MainActivity::class.java)
+            startActivity(intent)
+        }
+        binding.BookmarkBtn.setOnClickListener{
+            val intent= Intent(this@UserProfile,MainActivity::class.java)
+            startActivity(intent)
+        }
+        binding.ChartBtn.setOnClickListener{
+            val intent= Intent(this@UserProfile,ChartCoin::class.java)
+            startActivity(intent)
+        }
+        binding.ProfileBtn.setOnClickListener{
+            val intent= Intent(this@UserProfile,UserProfile::class.java)
+            startActivity(intent)
         }
     }
 }
