@@ -1,18 +1,27 @@
 package com.example.appchinhthuc.Activity
 
 import android.content.Intent
+import android.graphics.Color
 import android.icu.text.DecimalFormat
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
+import com.example.appchinhthuc.Activity.Model.CoinMarketCapResponse
+import com.example.appchinhthuc.Activity.Model.CryptoCurrency
 import com.example.appchinhthuc.Model.CryptoModel
 import com.example.appchinhthuc.R
 import com.example.appchinhthuc.databinding.ActivityDetailCryptoBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class DetailCryptoActivity : AppCompatActivity() {
     lateinit var binding:ActivityDetailCryptoBinding
@@ -28,7 +37,7 @@ class DetailCryptoActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
         )
-       getBundle()
+        fetchLatestListings()
         orderType()
         setVariable()
         setDirectionBtn()
@@ -67,12 +76,36 @@ class DetailCryptoActivity : AppCompatActivity() {
         }
     }
 
-    private fun getBundle() {
+    private fun getBundle(data: List<CryptoCurrency>?) {
+
         item=intent.getParcelableExtra("object")!!
 
         binding.symbolNameTxt.text=item.ShortSymbol
-        binding.priceTxt.text=item.Price.toString()
-        binding.changePercentTxt.text=item.ChangePercent.toString()+"$"
+        var exist: Boolean=false
+        data?.forEach {
+            if(item.Symbol==it.name){
+                var price=it.quote.USD.price
+                price=BigDecimal(price).setScale(2, RoundingMode.HALF_EVEN).toDouble()
+                binding.priceTxt.setText("${price} $")
+                var changed=it.quote.USD.percent_change_1h*it.quote.USD.price/100
+                changed=BigDecimal(changed).setScale(2,RoundingMode.HALF_EVEN).toDouble()
+                binding.changePercentTxt.setText("${changed}$")
+
+                if(changed<0) {
+                    binding.priceTxt.setTextColor(Color.RED)
+                    binding.changePercentTxt.setTextColor(Color.RED)
+                }
+                else {
+                    binding.priceTxt.setTextColor(Color.GREEN)
+                    binding.changePercentTxt.setTextColor(Color.GREEN)
+                }
+                exist=true
+            }
+        }
+        if(!exist) {
+            binding.priceTxt.text = item.Price.toString()
+            binding.changePercentTxt.text = item.ChangePercent.toString() + "$"
+        }
         binding.pSellTxt1.text=formatter?.format(item.SellPrice1)?:"0"
         binding.pSellTxt2.text=formatter?.format(item.SellPrice2)?:"0"
         binding.pSellTxt3.text=formatter?.format(item.SellPrice3)?:"0"
@@ -100,10 +133,10 @@ class DetailCryptoActivity : AppCompatActivity() {
         binding.dailyChangeTxt.text=item.DailyChange.toString()+"%"
         binding.dailyVolTxt.text=item.DailyVol.toString()+"T"
 
-        if(item.ChangePercent>0){
+        if(item.ChangePercent>0 &&!exist){
             binding.priceTxt.setTextColor(resources.getColor(R.color.green))
             binding.changePercentTxt.setTextColor(resources.getColor(R.color.green))
-        } else {
+        } else if(!exist) {
             binding.priceTxt.setTextColor(resources.getColor(R.color.red))
             binding.changePercentTxt.setTextColor(resources.getColor(R.color.red))
         }
@@ -140,5 +173,28 @@ class DetailCryptoActivity : AppCompatActivity() {
             val intent=Intent(this@DetailCryptoActivity,UserProfile::class.java)
             startActivity(intent)
         }
+    }
+    private fun fetchLatestListings() {
+        val call = RetrofitInstance.api.getLatestListings(start = 1, limit = 200, convert = "USD")
+
+        call.enqueue(object : Callback<CoinMarketCapResponse> {
+            override fun onResponse(call: Call<CoinMarketCapResponse>, response: Response<CoinMarketCapResponse>) {
+                if (response.isSuccessful) {
+                    response.body()?.data?.let { getBundle(it) }
+                    // Process the response data
+
+                } else {
+                    getBundle(null)
+                    Toast.makeText(this@DetailCryptoActivity,"Error: ${response.errorBody()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<CoinMarketCapResponse>, t: Throwable) {
+                Toast.makeText(this@DetailCryptoActivity,"Failed to fetch data: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+    private fun SetValue(data:List<CryptoCurrency>){
+
     }
 }
