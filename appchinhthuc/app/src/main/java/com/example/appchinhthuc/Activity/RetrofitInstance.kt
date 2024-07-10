@@ -10,7 +10,6 @@ object RetrofitInstance {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-
     val api: CoinMarketCapService by lazy {
         retrofit.create(CoinMarketCapService::class.java)
     }
